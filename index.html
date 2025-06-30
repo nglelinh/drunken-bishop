@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drunken Bishop Algorithm Animation</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Drunken Bishop Algorithm</h1>
+            <p>Visualizing the SSH key fingerprint generation algorithm</p>
+        </header>
+
+        <div class="controls">
+            <div class="input-section">
+                <label for="hashInput">Enter Hash (hex):</label>
+                <input type="text" id="hashInput" placeholder="Enter hexadecimal hash..." 
+                       value="16:b6:cf:0d:36:7f:77:5e:0e:9b:2f:1a:7c:4e:24:8b">
+                <div class="bytes-display">
+                    <strong>Bytes:</strong> <span id="bytesDisplay">-</span>
+                </div>
+                <button id="generateBtn">Generate</button>
+                <button id="animateBtn">Animate</button>
+                <button id="pauseBtn" style="display: none;">Pause</button>
+                <button id="resetBtn">Reset</button>
+            </div>
+            
+            <div class="speed-control">
+                <label for="speedSlider">Animation Speed:</label>
+                <input type="range" id="speedSlider" min="1" max="10" value="5">
+                <span id="speedValue">5</span>
+            </div>
+        </div>
+
+        <div class="board-container">
+            <div class="board-info">
+                <div class="current-step">
+                    <strong>Current Step:</strong> <span id="currentStep">Ready</span>
+                </div>
+                <div class="current-position">
+                    <strong>Position:</strong> <span id="currentPosition">(8, 4)</span>
+                </div>
+                <div class="current-byte">
+                    <strong>Current Byte:</strong> <span id="currentByte">-</span>
+                </div>
+            </div>
+            
+            <div class="bit-conversion" id="bitConversion" style="display: none;">
+                <div class="conversion-title">
+                    <strong>Byte to Movement Conversion:</strong>
+                </div>
+                <div class="conversion-details">
+                    <div class="byte-info">
+                        <span class="byte-label">Byte:</span>
+                        <span id="currentByteValue">-</span>
+                        <span class="binary-label">Binary:</span>
+                        <span id="currentByteBinary">-</span>
+                    </div>
+                    <div class="bit-pairs" id="bitPairs">
+                        <!-- Bit pairs will be populated dynamically -->
+                    </div>
+                </div>
+            </div>
+            
+            <div id="board" class="board"></div>
+            
+            <div class="legend">
+                <div class="legend-item">
+                    <div class="legend-color empty"></div>
+                    <span>Empty (0)</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color visited"></div>
+                    <span>Visited (1-14)</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color start"></div>
+                    <span>Start Position (S)</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color current"></div>
+                    <span>Current Position</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color end"></div>
+                    <span>End Position (E)</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="algorithm-info">
+            <h3>Algorithm Steps:</h3>
+            <ol>
+                <li>Start at the center of a 17×9 grid (position 8,4)</li>
+                <li>For each byte in the hash:</li>
+                <li>Extract 4 pairs of bits (2 bits each)</li>
+                <li>Move according to bit pairs: 00=↖, 01=↗, 10=↙, 11=↘</li>
+                <li>Stay within bounds (bounce off edges)</li>
+                <li>Increment counter for each visited position</li>
+                <li>Mark start position as 'S' and end position as 'E'</li>
+            </ol>
+        </div>
+    </div>
+
+    <script src="drunken-bishop.js"></script>
+</body>
+</html>
