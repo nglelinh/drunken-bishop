@@ -2,6 +2,8 @@
 
 A JavaScript implementation and visualization of the Drunken Bishop algorithm, used for generating visual fingerprints of SSH keys and other cryptographic hashes.
 
+![alt text](image.png)
+
 ## What is the Drunken Bishop Algorithm?
 
 The Drunken Bishop algorithm is a method for creating visual representations of cryptographic fingerprints. It was introduced by Dirk Loss, Tobias Limmer, and Alexander von Gernler as a way to make SSH key fingerprints more memorable and easier to verify visually.
